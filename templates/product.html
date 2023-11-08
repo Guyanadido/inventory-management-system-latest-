@@ -1,0 +1,162 @@
+{% extends "layout.html" %}
+
+{% block title %} Products {% endblock %}
+{% block link %} <link rel="stylesheet" href="../static/CSS/productAndCustomers.css"> {% endblock %}
+{% block script %} <script src="../static/Javascript/products.js" defer></script> {% endblock %}
+
+{% block main %} 
+
+    <section class="search add">
+        <div class="search">
+            <span class="text">Search Item</span>
+            <div class="search-input">
+                    <form class="input" action="/product" method="post">
+                        <input class="" type="search" autocomplete="off" autofocus placeholder="search Item" name="q">
+                        <input class="btn btn-primary" type="submit" value="Submit">
+                    </form>
+                    <ul class="search-results">
+                    </ul>
+            </div>
+        </div>   
+        <div class="new-item">
+            <a href="/newitem">
+                <button type="button" class="btn btn-primary">Add Item</button>
+            </a>
+        </div>
+    </section>
+    <section class="list">
+        <table class="table products">
+            <thead>
+                <tr>
+                    <th scope="col" class="text">Name</th>
+                    <th scope="col" class="text">Catagory</th>
+                    <th scope="col" class="text">Price</th>
+                    <th scope="col" class="text">Quantity</th>
+                    <th scope="col" class="text">Stored location</th>
+                    <th scope="col" class="text">Tax rate</th>
+                    <th scope="col" class="text">Supplier</th>
+                    <th scope="col" class="text">description</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                <tr>
+                    <td class="text">Computer</td>
+                    <td class="text">Electronics</td>
+                    <td class="text">$900</td>
+                    <td class="text">50</td>
+                    <td class="text">A1</td>
+                    <td class="text">15%</td>
+                    <td class="text">HP</td>
+                    <td class="text">HP probook</td> 
+                    <td class="remove">
+                        <form action="/remove">
+                            <input type="hidden" value="">
+                            <button type="submit"><i class='bx bxs-trash-alt'></i>remove product</button>
+                        </form>
+                    </td>
+                </tr>
+                {% for pro in products %}
+                    <tr>
+                        <td class="text">
+                            <span class="table-text">{{ pro['product_name'] }}</span>
+                            <i class='bx bxs-edit edit_icon'></i>
+                            <form class="edit_form" action="/AlterTable">
+                                <input type="hidden" value="{{ pro['id'] }}" name="id">
+                                <input type="hidden" value="product_name" name="column">
+                                <input type="hidden" value="inventory_data" name="table">
+                                <input class="edit_input" type="text" name="value">
+                                <button class="edit_button" type="submit">edit</button>
+                            </form>
+                        </td>
+                        <td class="text">
+                            <span class="table-text">{{ pro['catagory']}}</span>
+                            <i class='bx bxs-edit edit_icon'></i>
+                            <form class="edit_form" action="/AlterTable">
+                                <input type="hidden" value="{{ pro['id'] }}" name="id">
+                                <input type="hidden" value="catagory" name="column">
+                                <input type="hidden" value="inventory_data" name="table">
+                                <input class="edit_input" type="text" name="value">
+                                <button class="edit_button" type="submit">edit</button>
+                            </form>
+                        </td>
+                        <td class="text">
+                            <span class="table-text">{{ pro['selling_price'] }}</span>
+                            <i class='bx bxs-edit edit_icon'></i>
+                            <form class="edit_form" action="/AlterTable">
+                                <input type="hidden" value="{{ pro['id'] }}" name="id">
+                                <input type="hidden" value="selling_price" name="column">
+                                <input type="hidden" value="inventory_data" name="table">
+                                <input class="edit_input" type="text" name="value">
+                                <button class="edit_button" type="submit">edit</button>
+                            </form>
+                        </td>
+                        <td class="text">
+                            <span class="table-text">{{ pro['quantity'] }}</span>
+                            <i class='bx bxs-edit edit_icon'></i>
+                            <form class="edit_form" action="/AlterTable">
+                                <input type="hidden" value="{{ pro['id'] }}" name="id">
+                                <input type="hidden" value="quantity" name="column">
+                                <input type="hidden" value="inventory_data" name="table">
+                                <input class="edit_input" type="text" name="value">
+                                <button class="edit_button" type="submit">edit</button>
+                            </form>
+                        </td>
+                        <td class="text">
+                            <span class="table-text">{{ pro['stored_location'] }}</span>
+                            <i class='bx bxs-edit edit_icon'></i>
+                            <form class="edit_form" action="/AlterTable">
+                                <input type="hidden" value="{{ pro['id'] }}" name="id">
+                                <input type="hidden" value="stored_location" name="column">
+                                <input type="hidden" value="inventory_data" name="table">
+                                <input class="edit_input" type="text" name="value">
+                                <button class="edit_button" type="submit">edit</button>
+                            </form>
+                        </td>
+                        <td class="text">
+                            <span class="table-text">{{ pro['tax_rate'] }}</span>
+                            <i class='bx bxs-edit edit_icon'></i>
+                            <form class="edit_form" action="/AlterTable">
+                                <input type="hidden" value="{{ pro['id'] }}" name="id">
+                                <input type="hidden" value="tax_rate" name="column">
+                                <input type="hidden" value="inventory_data" name="table">
+                                <input class="edit_input" type="text" name="value">
+                                <button class="edit_button" type="submit">edit</button>
+                            </form>
+                        </td>
+                        <td class="text">
+                            <span class="table-text">{{ pro['supplier'] }}</span>
+                            <!-- <i class='bx bxs-edit edit_icon'></i>
+                            <form class="edit_form" action="/AlterTable">
+                                <input type="hidden" value="{{ pro['id'] }}" name="id">
+                                <input type="hidden" value="supplier" name="column">
+                                <input type="hidden" value="inventory_data" name="table">
+                                <input class="edit_input" type="text" name="value">
+                                <button class="edit_button" type="submit">edit</button>
+                            </form> -->
+                        </td>
+                        <td class="text">
+                            <span class="table-text">{{ pro['description'] }}</span>
+                            <i class='bx bxs-edit edit_icon'></i>
+                            <form class="edit_form" action="/AlterTable">
+                                <input type="hidden" value="{{ pro['id'] }}" name="id">
+                                <input type="hidden" value="description" name="column">
+                                <input type="hidden" value="inventory_data" name="table">
+                                <input class="edit_input" type="text" name="value">
+                                <button class="edit_button" type="submit">edit</button>
+                            </form>
+                        </td>
+                        <td class="remove">
+                            <form action="/AlterTable" method="post">
+                                <input name="id" type="hidden" value="{{ pro['id'] }}">
+                                <input name="table" type="hidden" value="inventory_data">
+                                <button type="submit"><i class='bx bxs-trash-alt'></i>remove product</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+{% endblock %}

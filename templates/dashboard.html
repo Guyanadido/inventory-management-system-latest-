@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+{% block title %} Dashboard {% endblock %}
+{% block link %} <link rel="stylesheet" href="../static/CSS/dashbord.css"> {% endblock %}
+{% block script %} <script src="../static/Javascript/dashboard.js" defer></script> {% endblock %}
+ 
+{% block main %}
+
+    <div id="container">
+        <section class="bordered-box dashbord_section product_management">
+           <div class="sub-section Products_stock_levels">
+            <h3>Total stock levels</h3>
+            {% for stock in stocks %}
+
+            <span class="text">{{ stock.product_name }}: {{ stock.quantity }}</span>
+
+            {% endfor %}
+            
+            <a href="/product"><span class="text">see more</span></a>
+           </div>
+           <div class="sub-section low_stock_alerts">
+            <h3>Low stock alerts</h3>
+            {% for stock in low_stocks %}
+
+            <span class="text">{{ stock.product_name }}: {{ stock.quantity }}</span>
+
+            {% endfor %}
+            <a href="#"><span class="text">see more</span></a>
+           </div>
+           <div class="sub-section total_Quantity_and_value">
+            <h4>TOTAL <br>QUANTITY: {{ total_quantity_and_value['sum(quantity)']}} Units</h4>
+            <h4>TOTAL <br>VALUE: ${{ total_quantity_and_value['sum(selling_price)'] }}</h4>
+           </div>
+        </section>
+        <hr>
+        <section class="bordered-box dashbord_section sales_management">
+            <div class="sub-section Top_Selling_items">
+                <div class="top">
+                    <h6 class="top1">Top Selling items</h6>
+                    <select class="top2 form-select prompt required" aria-label="Default select example" name="date">
+                        {% for key in dates %}
+ 
+                         <option value="{{ key }}">{{ key }}</option>
+ 
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="records">
+                    <span class="text">Laptops: 500</span>
+                    <span class="text">SmartWatchs: 210</span>
+                    <span class="text">Tablets: 89</span>
+                </div>
+                <a href="#"><span class="text">see more</span></a>
+            </div>
+            <div class="sub-section Recent_Sales">
+                <h6 class="top1">Recent sales</h6>
+                {% for sales in recent_sales %}
+
+                <span class="text"> {{ sales.quantity_sold }} {{ sales.product_name }} sold at total price {{ sales.total_price }}</span>
+
+                {% endfor %}
+                
+                <a href="#"><span class="text">see more</span></a>
+            </div>
+            <div class="sub-section Sales_Reports">
+                <div class="top">
+                    <h6 class="top1">sales reports</h6>
+                    <select class="top2 form-select prompt required" aria-label="Default select example" name="Brand" required>
+                       {% for key in dates %}
+
+                        <option value="{{ key }}">{{ key }}</option>
+
+                       {% endfor %}
+                    </select>
+                </div>
+                <span class="text">Laptops: 500</span>
+                <span class="text">SmartWatchs: 210</span>
+                <span class="text">Tablets: 89</span>
+                <a href="#"><span class="text">see more</span></a>
+            </div>
+        </section>
+        <hr>
+        <section class="bordered-box dashbord_section recent_and_summery">
+            <div class="sub-section summery">
+                <select class="top2 form-select prompt required" aria-label="Default select example" name="dates" style="width: 200px;">
+                    {% for key in dates %}
+
+                     <option value="{{ key }}">{{ key }}</option>
+
+                    {% endfor %}
+                </select>
+                <canvas id="myChart"></canvas>
+                
+            </div>
+        </section>
+        <hr>
+        <hr>   
+    </div>
+
+{% endblock %}

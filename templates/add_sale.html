@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+    {% block title %} New sale {% endblock %}
+    {% block link %} <link rel="stylesheet" href="../static/CSS/add_sales.css"> {% endblock %}
+    {% block script %} <script src="../static/Javascript/add_sale.js" defer></script> {% endblock %}
+
+{% block main %}
+    <div class="details"></div>
+        <form action="/newsale" method="post">
+            <h4>Sales Information</h4>
+                <div class="section sales-info">
+                    <!-- item details -->
+                    <div class="sales-info-prompts ">
+                        <div class="product_lit">
+                            <label for="exampleDataList" class="form-label prompt">Product Name</label>
+                            <input name="product_name" class="form-control product_name required" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+                            <datalist id="datalistOptions">
+                                {% for product in product_names %}
+
+                                    <option value="{{ product.product_name }}">{{ product.product_name }}</option>
+                                    <input type="hidden" name="product_id" value="{{ product.id }}">
+
+                                {% endfor %}
+                            </datalist>
+                            <p class="danger"></p>
+                        </div> 
+                        <div class="mb-3 prompt">
+                            <label for="exampleFormControlInput2" class="form-label">quantity</label>
+                            <input id="exampleFormControlInput2" type="number" aria-label="quantity" class="form-control quantity required" min="1" name="quantity" placeholder="1" required value="1">
+                            <p class="danger"></p>
+                        </div>
+                        <div class="mb-3 prompt">
+                            <label for="exampleFormControlInput3" class="form-label">Discount In % (If any)</label>
+                            <input type="number" class="form-control discount" id="exampleFormControlInput3"  name="discount" placeholder="15%" min="0" max="50" >
+                        </div>
+                    </div>
+                    <div class="price_details">
+                        <input type="hidden" name="product_price">
+                        <h3 class="text product_price">Single Product Price: </h3>
+                        <input type="hidden" name="product_tax">
+                        <h3 class="text product_tax">Tax: </h3>
+                        <input type="hidden" name="product_total_price">
+                        <h3 class="text product_total_price">Total Price: </h3>
+                    </div>
+                </div>
+                <hr>
+                <div class="section other-datails">
+                    <div class="prompt-alone">
+                            <label for="exampleDataList1 required" class="form-label prompt">Customer name</label>
+                            <input name="customer_name" class="form-control required" list="datalistOptions1" id="exampleDataList1" placeholder="Type to search...">
+                            <datalist id="datalistOptions1">
+                                {% for name in customer_names %}
+
+                                    <option value="{{ name.company }}">{{ name.company }}</option>
+                                    <input type="hidden" name="customer_id" value="{{ name.id }}">
+
+                                {% endfor %}
+                            </datalist>
+                            <p class="danger"></p>
+                    </div>
+                    <div class="prompt-alone">
+                        <label for="exampleDataList2" class="form-label prompt">Payment Terms</label>
+                        <input name="payment_term" class="form-control required" list="datalistOptions2" id="exampleDataList2" placeholder="choose payment term">
+                        <datalist id="datalistOptions2">
+                            {% for terms in payment_terms %}
+
+                                <option value="{{ terms }}">{{ terms }}</option>
+
+                            {% endfor %}
+                        </datalist>
+                        <p class="danger"></p>
+                    </div>
+                    <div class="mb-3 prompt-alone">
+                        <label for="exampleFormControlTextarea7" class="form-label">Notes or Comments</label>
+                        <textarea name="notes_or_comments" class="form-control" id="exampleFormControlTextarea7" rows="1" name="sales_description" placeholder="add any note or comment about the sale"></textarea>
+                    </div>
+                </div>
+                <div class="submit_or_cancel">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-secondary cancelButton">Cancel</button>
+                </div>
+        </form>
+    </div>
+
+{% endblock %}

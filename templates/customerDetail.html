@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+{% block title %} details {% endblock %}
+{% block link %} <link rel="stylesheet" href="../static/CSS/details.css"> {% endblock %}
+
+{% block main %}
+
+    <div class="container">
+        <div class="secondary_contacts">
+            <h3 style="font-weight: 500;">Customers secondary contacts</h3>
+            {% for person in people %}
+                <section class="person">
+                    <div>
+                        <h4>Name: </h4> 
+                        <span>{{ person.name }}</span>
+                    </div>
+                    <div>
+                        <h4>Email: </h4>
+                        <span>{{ person.email }}</span>
+                    </div>
+                    <div>
+                        <h4>Company</h4>
+                        <span>{{ person.company }}</span>
+                    </div>
+                    <div>
+                        <h4>Mobile Phone:</h4>
+                        <span>{{ person.mobile_phone }}</span>
+                    </div>
+                    <div>
+                        <h4>Work Phone:</h4>
+                        <span>{{ person.work_phone }}</span>
+                    </div>
+                    
+                </section>
+                <hr>
+            {% endfor %}
+            {% if not people %}
+                <li>No Secondary Contacts</li>
+            {% endif %}
+        </div>
+        <div class="activities">
+            <h3 style="font-weight: 500;">{{ buyer }} Purchased</h3>
+            <ol>
+                {% for purchase in purchase_history %}
+                        <li>
+                            <ul>
+                                <li>{{ purchase.quantity_sold }} {{ purchase.product_name }} on {{ purchase.order_date }}</li>
+                                <li>Peyment Term is {{ purchase.payment_terms }}</li>
+                                <li>Sales notes: {{ purchase.notes_or_comments }}</li>      
+                            </ul>
+                        </li>
+                        <hr>
+                {% endfor %}
+                {% if not purchase_history %}
+                    <li>No Purchases Yet</li>
+                {% endif %}
+            </ol>
+        </div>
+    </div>
+
+{% endblock %}

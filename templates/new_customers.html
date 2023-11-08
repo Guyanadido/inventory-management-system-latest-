@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+
+{% block main %}
+    <div class="add_customers item-details"></div>
+        <form action="/newitem" method="post">
+                <div class="section item-info">
+                    <!-- item details -->
+                    <div class="prompts">
+                        <div class="mb-3 prompt">
+                            <label for="exampleFormControlInput1" class="form-label">Customer Name</label>
+                            <input type="text" class="form-control required" id="exampleFormControlInput1"  name="item_name" placeholder="Mr. Guyo" required>
+                            <p class="danger"></p>
+                        </div>
+                        <div class="mb-3 prompt">
+                            <label for="exampleFormControlInput2" class="form-label">Company</label>
+                            <input type="text" class="form-control required" id="exampleFormControlInput2"  name="catagory" placeholder="eg. gush Tech" required>
+                            <p class="danger"></p>
+                        </div>
+                        <div class="mb-3 prompt">
+                            <label for="exampleFormControlInput3" class="form-label">Email</label>
+                            <input type="text" class="form-control required" id="exampleFormControlInput3"  name="catagory" placeholder="Email" required>
+                            <p class="danger"></p>
+                        </div>
+                        <div class="mb-3 prompt">
+                            <label for="exampleFormControlInput4" class="form-label">Mobile Pnone</label>
+                            <input type="number" class="form-control required" id="exampleFormControlInput4"  name="quantity" placeholder="eg. +251972154918" min="1" required>
+                            <p class="danger"></p>
+                        </div>
+                        <div class="mb-3 prompt">
+                            <label for="exampleFormControlInput5" class="form-label">Work Pnone</label>
+                            <input type="number" class="form-control required" id="exampleFormControlInput5"  name="quantity" placeholder="eg. +211184655446" min="1" required>
+                            <p class="danger"></p>
+                        </div>
+                        <div class="mb-3 prompt">
+                            <label for="exampleFormControlTextarea2" class="form-label">Item Description</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea2" rows="1" name="item_description" ></textarea>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                    <div class="submit">
+                        <button type="button" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-secondary">Cancel</button>
+                    </div>
+                </div>
+        </form>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,68 @@
+:root {
+    /* colors */
+    --body-color:#E4E9F7;
+    --sidebar-color:#fff;
+    --primary-color:#695CFE;
+    --primary-color-light:#F6F5FF;
+    --toggle-color:#DDD;
+    --text-color:#707070;
+
+
+    /* transitions */
+
+    --tran-02: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.4s ease;
+    --tran-05: all 0.5s ease;
+
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: stretch;
+}
+
+.secondary_contacts, .activities{
+    padding: 2%;
+    width: 48%;
+    background-color: var(--primary-color-light);
+    color: var(--text-color);
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-radius: 6px;
+}
+
+section {
+    margin: 5%;
+}
+
+section div{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding-left: 5%;
+    column-gap: 5%;
+}
+
+ul {
+    list-style: none;
+}
+
+.supplier_details {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: var(--primary-color-light);
+    border-radius: 6px;
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
+}

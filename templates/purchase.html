@@ -1,0 +1,199 @@
+{% extends "layout.html" %}
+{% block link %} <link rel="stylesheet" href="../static/CSS/productAndCustomers.css"> {% endblock %}
+{% block script %} <script src="../static/Javascript/customers.js" defer></script> {% endblock %}
+
+{% block title %} customers {% endblock %}
+
+{% block main %}
+
+<section class="search add">
+    <div class="search">
+        <span class="text">Search sale</span>
+        <div class="search-input">
+                <form class="input" action="/saleduct" method="post">
+                    <input class="" type="search" autocomplete="off" autofocus placeholder="search sale" name="q">
+                    <ul class="search-results">
+                    </ul>
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="inputGroupSelect01">Search By</label>
+                        <select class="form-select" id="inputGroupSelect01">
+                            {% for searched in searchBy %}
+
+                                <option value="{{ searched }}">{{ searched }}</option>
+
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <input class="btn btn-primary" type="submit" value="Search">
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="inputGroupSelect02">Sort By</label>
+                        <select class="form-select " id="inputGroupSelect02" name="sortBy">
+                            {% for sort in sortBy %}
+
+                                <option value="{{ sort }}">{{ sortBy[sort] }}</option>
+
+                            {% endfor %}
+                        </select>
+                    </div>
+                </form>
+        </div>
+    </div>   
+    <div class="new-item">
+        <a href="#">
+            <button type="button" class="btn btn-primary">New</button>
+        </a>
+    </div>
+</section>
+<section class="list">
+    <table class="table products">
+        <thead>
+            <tr>
+                <th scope="col" class="text">Name</th>
+                <th scope="col" class="text">Company Name</th>
+                <th scope="col" class="text">email</th>
+                <th scope="col" class="text">work Phone</th>
+                <th scope="col" class="text">mobile phone</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            <tr>
+                <td class="text">Guyana</td>
+                <td class="text">Gush tech</td>
+                <td class="text">Guyanadido@gmail.com</td> 
+                <td class="text">+251972154918</td> 
+                <td class="text">+251982824657</td> 
+                <td class="details">
+                    <form action="/details">
+                        <input name="id" type="hidden" value="">
+                        <input name="table" type="hidden" value="secondary_persons">
+                        <button type="submit"><i class='bx bxs-detail' ></i>Details</button>
+                    </form>
+                </td>
+                <td class="remove">
+                    <form action="/remove">
+                        <input type="hidden" value="">
+                        <button type="submit"><i class='bx bxs-trash-alt'></i>remove</button>
+                    </form>
+                </td>
+            </tr>
+            {% for customer in customers %}
+                <tr>
+                    <td class="text">
+                        <span class="table-text">{{ customer["name"] }}</span>
+                        <i class='bx bxs-edit edit_icon'></i>
+                        <form class="edit_form" action="/AlterTable">
+                            <input type="hidden" value="{{ customer['id'] }}" name="id">
+                            <input type="hidden" value="name" name="column">
+                            <input type="hidden" value="persons" name="table">
+                            <input class="edit_input" type="text" name="value">
+                            <button class="edit_button" type="submit">edit</button>
+                        </form>
+                    </td>
+                    <td class="text">
+                        <span class="table-text">{{ customer["company"]}}</span>
+                        <i class='bx bxs-edit edit_icon'></i>
+                        <form class="edit_form" action="/AlterTable">
+                            <input type="hidden" value="{{ customer['id'] }}" name="id">
+                            <input type="hidden" value="company" name="column">
+                            <input type="hidden" value="persons" name="table">
+                            <input class="edit_input" type="text" name="value">
+                            <button class="edit_button" type="submit">edit</button>
+                        </form>
+                    </td>
+                    <td class="text">
+                        <span class="table-text">{{ customer["email"] }}</span>
+                        <i class='bx bxs-edit edit_icon'></i>
+                        <form class="edit_form" action="/AlterTable">
+                            <input type="hidden" value="{{ customer['id'] }}" name="id">
+                            <input type="hidden" value="email" name="column">
+                            <input type="hidden" value="persons" name="table">
+                            <input class="edit_input" type="text" name="value">
+                            <button class="edit_button" type="submit">edit</button>
+                        </form>
+                    </td>
+                    <td class="text">
+                        <span class="table-text">{{ customer["work_phone"] }}</span>
+                        <i class='bx bxs-edit edit_icon'></i>
+                        <form class="edit_form" action="/AlterTable">
+                            <input type="hidden" value="{{ customer['id'] }}" name="id">
+                            <input type="hidden" value="work_phone" name="column">
+                            <input type="hidden" value="phoneNumber" name="table">
+                            <input class="edit_input" type="text" name="value">
+                            <button class="edit_button" type="submit">edit</button>
+                        </form>
+                    </td>
+                    <td class="text">
+                        <span class="table-text">{{ customer["mobile_phone"] }}</span>
+                        <i class='bx bxs-edit edit_icon'></i>
+                        <form class="edit_form" action="/AlterTable">
+                            <input type="hidden" value="{{ customer['id'] }}" name="id">
+                            <input type="hidden" value="mobile_phone" name="column">
+                            <input type="hidden" value="phoneNumber" name="table">
+                            <input class="edit_input" type="text" name="value">
+                            <button class="edit_button" type="submit">edit</button>
+                        </form>
+                    </td>
+                    <td class="details">
+                        <form action="/details">
+                            <input name="id" type="hidden" value="{{ customer['id'] }}">
+                            <input name="buyer_name" type="hidden" value="gush Tech">
+                            <button type="submit"><i class='bx bxs-detail' ></i>Details</button>
+                        </form>
+                    </td>
+                    <td class="remove">
+                        <form action="/AlterTable" method="post">
+                            <input name="id" type="hidden" value="{{ customer['id'] }}">
+                            <input name="table" type="hidden" value="persons">
+                            <button type="submit"><i class='bx bxs-trash-alt'></i>remove</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+    <form class="add_customers" action="/newcustomers" method="post">
+            <div class="section item-info">
+                <!-- item details -->
+                <div class="prompts">
+                    <div class="mb-3 prompt">
+                        <label for="exampleFormControlInput1" class="form-label">Customer Name</label>
+                        <input autofocus autocomplete="off" type="text" class="form-control required" id="exampleFormControlInput1"  name="customer_name" placeholder="Mr. Guyo" required>
+                        <p class="danger"></p>
+                    </div>
+                    <div class="mb-3 prompt">
+                        <label for="exampleFormControlInput2" class="form-label">Company</label>
+                        <input type="text" autocomplete="off" class="form-control required" id="exampleFormControlInput2"  name="company" placeholder="eg. gush Tech" required>
+                        <p class="danger"></p>
+                    </div>
+                    <div class="mb-3 prompt">
+                        <label for="exampleFormControlInput3" class="form-label">Email</label>
+                        <input type="text" autocomplete="off" class="form-control required" id="exampleFormControlInput3"  name="email" placeholder="Email" required>
+                        <p class="danger"></p>
+                    </div>
+                    <div class="mb-3 prompt">
+                        <label for="exampleFormControlInput4" class="form-label">Mobile Pnone</label>
+                        <input type="number" autocomplete="off" class="form-control required" id="exampleFormControlInput4"  name="mobile_phone" placeholder="eg. +251972154918" min="1" required>
+                        <p class="danger"></p>
+                    </div>
+                    <div class="mb-3 prompt">
+                        <label for="exampleFormControlInput5" class="form-label">Work Pnone</label>
+                        <input type="number" autocomplete="off" class="form-control required" id="exampleFormControlInput5"  name="work_phone" placeholder="eg. +211184655446" min="1" required>
+                        <p class="danger"></p>
+                    </div>
+                    <div class="mb-3 prompt">
+                        <label for="exampleFormControlTextarea2" class="form-label">Item Description</label>
+                        <textarea autocomplete="off" class="form-control" id="exampleFormControlTextarea2" rows="1" name="item_description" ></textarea>
+                    </div>
+                </div>
+            </div>
+            <hr>
+                <div class="submit submit_or_cancel">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-secondary cancelButton">Cancel</button>
+                </div>
+            </div>
+    </form>
+{% endblock %}

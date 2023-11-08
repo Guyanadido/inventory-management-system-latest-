@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../static/Javascript/login_register.js" defer></script>
+    <title>Login Page</title>
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        * {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            row-gap: 20px;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('../static/images/background.jpg'); /* Add the path to your background image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            opacity: 0.95; /*Adjust the opacity to your liking */
+        }
+
+        #welcome_message {
+            font-size: 40px;
+            color: #36454f;
+            font-weight: 500;
+        }
+
+        .description {
+            color: #36454f;
+            font-weight: 500;
+            font-size: 20px;
+        }
+        
+        .login-container {
+            height: 50%;
+            background-color: rgba(255, 255, 255, 0.9); /* Add an alpha channel for background color */
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        
+        .login-container h2 {
+            margin: 0;
+            color: #333;
+        }
+        
+        .input-container {
+            margin-top: 20px;
+        }
+        
+        .input-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px -10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 16px;
+        }
+        
+        .input-container input[type="submit"] {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .input-container input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+        
+        .register-link {
+            margin-top: 10px;
+            color: #3498db;
+            text-decoration: none;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="welcome_message"></div>
+    <div class="description">Simplify, Organize, and Optimize Your Inventory</div>
+    <form action="/login" method="post" class="login-container">
+        <h2>Login Here</h2>
+        <div class="input-container">
+            <input name="username" type="text" placeholder="Username">
+        </div>
+        <div class="input-container">
+            <input name="password" type="password" placeholder="Password">
+        </div>
+        <div class="input-container">
+            <input type="submit" value="Login">
+        </div>
+        <a class="register-link" href="/register">Don't have an account? Register here</a>
+    </form>
+</body>
+</html>

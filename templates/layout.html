@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ======== Bootstrap ========== -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous" defer></script>
+
+
+    <!-- ======= CSS ====== -->
+    <link rel="stylesheet" href="../static/CSS/style.css">
+    {% block link %}  {% endblock %}
+
+    <!-- ======= Boxicons CSS ====== -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.js" defer integrity="sha512-6LKCH7i2+zMNczKuCT9ciXgFCKFp3MevWTZUXDlk7azIYZ2wF5LRsrwZqO7Flt00enUI+HwzzT5uhOvy6MNPiA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <script src="../static/Javascript/script.js" defer></script>
+    {% block script %} {% endblock %}
+    {% block anotherScript %} {% endblock %}
+    <title>{% block title %} layout {% endblock %}</title>
+</head>
+<body>
+    <nav class="sidebar">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="../static/images/Logo.jpg" alt="LOGO">
+                </span>
+
+                <div class="text header-text">
+                    <span class="proffession">Inventory management</span>
+                </div>
+            </div>
+
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+                <ul>
+                    <li class="nav-link">
+                        <a href="/">
+                            <i class='bx bx-home-alt icon' ></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="/product">
+                            <i class='bx bx-package icon'></i>
+                            <span class="text nav-text">Product</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="/sales">
+                            <i class='bx bx-cube-alt icon'></i>
+                            <span class="text nav-text">sales</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="/customers">
+                            <i class='bx bxs-face icon'></i>
+                            <span class="text nav-text">customers</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="/supplier">
+                            <i class='bx bx-cube-alt icon'></i>
+                            <span class="text nav-text">suppier</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-purchase-tag-alt icon' ></i>
+                            <span class="text nav-text">Sales Recipts</span>
+                        </a>
+                    </li>
+                    <!-- <div class="nav-link sales">
+                        <div>
+                            <div class="icon-text">
+                                <a href="#">
+                                    <i class='bx bx-cart icon'></i>
+                                    <span class="text nav-text">Sales</span>
+                                </a>
+                            </div>
+                            <div class="sub_pages">
+                                <ul>
+                                    <li>
+                                        <a href="/customers"><span class="text nav-text">Customers</span></a>
+                                    </li>             
+                                    <li>
+                                        <a href=""><span class="text nav-text">Sales Orders</span></a>
+                                    </li>             
+                                    <li>
+                                        <a href="#"><span class="text nav-text">Sales Recipts</span></a>
+                                    </li>                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div> -->
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-stats icon'></i>
+                            <span class="text nav-text">Report & analytics</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-user icon'></i>
+                            <span class="text nav-text">User management</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-cog icon'></i>
+                            <span class="text nav-text">Settings</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="/logout">
+                            <i class='bx bx-log-out icon'></i>
+                            <span class="text nav-text">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+                <li class="mode">
+                    <div class="moon-sun">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+    
+                    <span class="mode-text text">Dark mode</span>
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+            </div>
+        </div>
+    </nav>
+    <main class="content text">
+        {% block main %} {% endblock %}
+    </main>
+</body>
+</html>

@@ -1,0 +1,196 @@
+{% extends "layout.html" %}
+{% block title %} sales {% endblock %}
+{% block link %} <link rel="stylesheet" href="../static/CSS/productAndCustomers.css"> {% endblock %}
+{% block script %} <script src="../static/Javascript/sales.js" defer></script> {% endblock %}
+
+
+{% block main %} 
+
+    <section class="search add">
+        <div class="search">
+            <span class="text">Search sale</span>
+            <div class="search-input">
+                    <form class="input" action="/saleduct" method="post">
+                        <input class="" type="search" autocomplete="off" autofocus placeholder="search sale" name="q">
+                        <ul class="search-results">
+                        </ul>
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="inputGroupSelect01">Search By</label>
+                            <select class="form-select" id="inputGroupSelect01">
+                                {% for searched in searchBy %}
+
+                                    <option value="{{ searched }}">{{ searchBy[searched] }}</option>
+
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <input class="btn btn-primary" type="submit" value="Search">
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="inputGroupSelect02">Sort By</label>
+                            <select class="form-select " id="inputGroupSelect02" name="sortBy">
+                                {% for sort in sortBy %}
+
+                                    <option value="{{ sort }}">{{ sortBy[sort] }}</option>
+
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </form>
+            </div>
+        </div>   
+        <div class="new-item">
+            <a href="/newsale">
+                <button type="button" class="btn btn-primary">New</button>
+            </a>
+        </div>
+        </div>
+    </section>
+    <section class="list">
+        <table class="table sale_table">
+            <thead>
+                <tr>
+                    <th scope="col" class="text">Customer Name</th>
+                    <th scope="col" class="text">Product Name</th>
+                    <th scope="col" class="text">Ordered Date</th>
+                    <th scope="col" class="text">Payement Terms</th>
+                    <th scope="col" class="text">Sales Person</th>
+                    <th scope="col" class="text">Quantity Sold</th>
+                    <th scope="col" class="text">Total Price</th>
+                    <th scope="col" class="text">Discount</th>
+                    <th scope="col" class="text">Notes / Comments</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                <tr>
+                    <td class="text">Guyo dido</td>
+                    <td class="text">10/20/25</td>
+                    <td class="text">net 30</td>
+                    <td class="text">Someone</td>
+                    <td class="text">Smartwatch</td>
+                    <td class="text">15</td>
+                    <td class="text">$50</td>
+                    <td class="text">NO</td> 
+                    <td class="text">this is Sold</td> 
+                    <td class="remove">
+                        <form action="/remove">
+                            <input type="hidden" value="">
+                            <button type="submit"><i class='bx bxs-trash-alt'></i>remove</button>
+                        </form>
+                    </td>
+                </tr>
+                {% for sale in sales %}
+                    <tr>
+                        <td class="text">
+                            <span class="table-text">{{ sale['buyer_name'] }}</span>
+                            <i class='bx bxs-edit edit_icon'></i>
+                            <form class="edit_form" action="/AlterTable">
+                                <input type="hidden" value="{{sale['id']}}" name="id">
+                                <input type="hidden" value="buyer_name" name="column">
+                                <input type="hidden" value="sales" name="table">
+                                <input class="edit_input" type="text" name="value">
+                                <button class="edit_button" type="submit">edit</button>
+                            </form>
+                        </td>
+                        <td class="text">
+                            <span class="table-text">{{ sale['product_name'] }}</span>
+                            <i class='bx bxs-edit edit_icon'></i>
+                            <form class="edit_form" action="/AlterTable">
+                                <input type="hidden" value="{{sale['id']}}" name="id">
+                                <input type="hidden" value="product_name" name="column">
+                                <input type="hidden" value="sales" name="table">
+                                <input class="edit_input" type="text" name="value">
+                                <button class="edit_button" type="submit">edit</button>
+                            </form>
+                        </td>
+                        <td class="text">
+                            <span class="table-text">{{ sale['order_date']}}</span>
+                            <i class='bx bxs-edit edit_icon'></i>
+                            <form class="edit_form" action="/AlterTable">
+                                <input type="hidden" value="{{sale['id']}}" name="id">
+                                <input type="hidden" value="order_date" name="column">
+                                <input type="hidden" value="sales" name="table">
+                                <input class="edit_input" type="text" name="value">
+                                <button class="edit_button" type="submit">edit</button>
+                            </form>
+                        </td>
+                        <td class="text">
+                            <span class="table-text">{{ sale['payment_terms'] }}</span>
+                            <i class='bx bxs-edit edit_icon'></i>
+                            <form class="edit_form" action="/AlterTable">
+                                <input type="hidden" value="{{sale['id']}}" name="id">
+                                <input type="hidden" value="payment_terms" name="column">
+                                <input type="hidden" value="sales" name="table">
+                                <input class="edit_input" type="text" name="value">
+                                <button class="edit_button" type="submit">edit</button>
+                            </form>
+                        </td>
+                        <td class="text">
+                            <span class="table-text">{{ sale['sales_person_name'] }}</span>
+                            <i class='bx bxs-edit edit_icon'></i>
+                            <form class="edit_form" action="/AlterTable">
+                                <input type="hidden" value="{{sale['id']}}" name="id">
+                                <input type="hidden" value="sales_person_name" name="column">
+                                <input type="hidden" value="sales" name="table">
+                                <input class="edit_input" type="text" name="value">
+                                <button class="edit_button" type="submit">edit</button>
+                            </form>
+                        </td>
+                        <td class="text">
+                            <span class="table-text">{{ sale['quantity_sold'] }}</span>
+                            <i class='bx bxs-edit edit_icon'></i>
+                            <form class="edit_form" action="/AlterTable">
+                                <input type="hidden" value="{{sale['id']}}" name="id">
+                                <input type="hidden" value="quantity_sold" name="column">
+                                <input type="hidden" value="sales" name="table">
+                                <input class="edit_input" type="text" name="value">
+                                <button class="edit_button" type="submit">edit</button>
+                            </form>
+                        </td>
+                        <td class="text">
+                            <span class="table-text">{{ sale['total_price'] }}</span>
+                            <i class='bx bxs-edit edit_icon'></i>
+                            <form class="edit_form" action="/AlterTable">
+                                <input type="hidden" value="{{sale['id']}}" name="id">
+                                <input type="hidden" value="total_price" name="column">
+                                <input type="hidden" value="sales" name="table">
+                                <input class="edit_input" type="text" name="value">
+                                <button class="edit_button" type="submit">edit</button>
+                            </form>
+                        </td>
+                        <td class="text">
+                            <span class="table-text">{{ sale['discounts'] }}</span>
+                            <i class='bx bxs-edit edit_icon'></i>
+                            <form class="edit_form" action="/AlterTable">
+                                <input type="hidden" value="{{sale['id']}}" name="id">
+                                <input type="hidden" value="discounts" name="column">
+                                <input type="hidden" value="sales" name="table">
+                                <input class="edit_input" type="text" name="value">
+                                <button class="edit_button" type="submit">edit</button>
+                            </form>
+                        </td>
+                        <td class="text">
+                            <span class="table-text">{{ sale['notes_or_comments'] }}</span>
+                            <i class='bx bxs-edit edit_icon'></i>
+                            <form class="edit_form" action="/AlterTable">
+                                <input type="hidden" value="{{sale['id']}}" name="id">
+                                <input type="hidden" value="notes_or_comments" name="column">
+                                <input type="hidden" value="sales" name="table">
+                                <input class="edit_input" type="text" name="value">
+                                <button class="edit_button" type="submit">edit</button>
+                            </form>
+                        </td>
+                        <td class="remove">
+                            <form action="/AlterTable" method="post">
+                                <input name="id" type="hidden" value="{{sale['id']}}">
+                                <input name="table" type="hidden" value="sales">
+                                <button type="submit"><i class='bx bxs-trash-alt'></i>remove sale</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+{% endblock %}

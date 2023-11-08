@@ -1,0 +1,109 @@
+:root {
+    /* colors */
+    --body-color:#E4E9F7;
+    --sidebar-color:#fff;
+    --primary-color:#695CFE;
+    --primary-color-light:#F6F5FF;
+    --toggle-color:#DDD;
+    --text-color:#707070;
+
+
+    /* transitions */
+
+    --tran-02: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.4s ease;
+    --tran-05: all 0.5s ease;
+
+}
+
+#container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.dashbord_section{
+
+}
+section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 1%;
+    row-gap: 1%;
+    margin-bottom: 1%;
+    height: auto;
+    width: auto;
+    border-radius: 6px;
+    padding: 1%;
+}
+
+section .sub-section {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    flex-grow: 1;
+    background-color: var(--sidebar-color);
+    padding: 1%;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.vertical-hr {
+    border-left: 0.5px solid #000; /* Adjust color and thickness as needed */
+    height: 100%; /* Adjust the height to your preference */
+    margin: 0 10px; /* Adjust margin to control the space around the vertical line */
+  }
+
+.bordered-box {
+    border: 0.5px solid var(--text-color); /*Define your border properties */
+    position: relative; /* Required to position the pseudo-element */
+  
+    /* Define the size, position, and appearance of the pseudo-element */
+  }
+
+.dark .bordered-box {
+    border: 0.5px solid lightgray;
+}
+  
+  
+ .bordered-box::before {
+    content: "Product Management"; /*Text you want to add*/
+    position: absolute;
+    top: -15px; /* Adjust this to control vertical position */
+    left: 20%; /* Center the text horizontally */
+    transform: translateX(-50%); /* Center the text horizontally */
+    background: var(--body-color); /* Background color behind the text */
+    padding: 0 10px; /* Add padding to create space around the text */
+    font-size: 1em;
+  }
+
+.top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 35px;
+    width: 100%;
+}
+
+.top2 {
+    max-width: 40%;
+    font-size: .85rem;
+    flex-shrink: 1;
+    background-color: #DDD;
+}
+
+.records {
+    display: flex;
+    flex-direction: column;
+}
+
+.summery {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 400px;
+}

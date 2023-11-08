@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block title %} Vendor Details {% endblock %}
+{% block link %} <link rel="stylesheet" href="../static/CSS/details.css"> {% endblock %}
+
+
+{% block main %}
+
+    <div class="supplier_details">
+        <div class="">
+            <h3 style="font-weight: 500;">From {{ buyer }}, you purchased</h3>
+            <ol>
+                {% for purchase in purchase_history %}
+                        <li>
+                            <ul>
+                                <li>{{ purchase.quantity }} {{ purchase.product_name }} on {{ purchase.data_added }}</li>
+                                <li>Price: {{ purchase.purchase_price }}</li>
+                                <li>Stored Location: {{ purchase.stored_location }}</li> 
+                                <li>Purchase Description: {{ purchase.description }}</li>     
+                            </ul>
+                        </li>
+                        <hr>
+                {% endfor %}
+                {% if not purchase_history %}
+                    <li>No Purchases Yet</li>
+                {% endif %}
+            </ol>
+        </div>
+    </div>
+
+{% endblock %}
