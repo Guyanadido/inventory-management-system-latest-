@@ -1,6 +1,6 @@
 **Introducing the GUSH Inventory Management System**
 
-The GUSH Inventory Management System is a comprehensive web application designed to streamline and enhance inventory control for auto parts sales businesses. 
+The GUSH Inventory Management System is a comprehensive web application designed to streamline and enhance inventory control for sales businesses. 
 
 **Key features include:**
 
